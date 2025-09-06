@@ -12,4 +12,9 @@ public class Reserva
         UsuarioId = usuarioId;
         PlazaId = plazaId;
     }
+
+    public void MostrarDetalles()
+    {
+        Console.WriteLine($"Reserva {Id}: Usuario {UsuarioId} -> Plaza {PlazaId}");
+    }
 }

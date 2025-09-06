@@ -12,4 +12,9 @@ public class Vehiculo
         Marca = marca;
         Matricula = matricula;
     }
+
+    public void MostrarInformacion()
+    {
+        Console.WriteLine($"Vehículo {Id}: {Marca} - {Matricula}");
+    }
 }

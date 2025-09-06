@@ -35,9 +35,11 @@ while (true)
             plazaNormal.MostrarInformacion();
             plazaPremium.MostrarInformacion();
             
-            Console.WriteLine($"\nVehículo: {vehiculo.Marca} - {vehiculo.Matricula}");
+            Console.WriteLine($"\nVehículo:");
+            vehiculo.MostrarInformacion();
             
-            Console.WriteLine($"\nReserva: Usuario {reserva.UsuarioId} -> Plaza {reserva.PlazaId}");
+            Console.WriteLine($"\nReserva:");
+            reserva.MostrarDetalles();
         }
         else if (opcion == 2)
         {
