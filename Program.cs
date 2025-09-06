@@ -6,8 +6,8 @@ Cliente cliente = new Cliente(1, "Juan Pérez", "juan@email.com");
 Admin admin = new Admin(2, "María García", "maria@parking.com", "Supervisor");
 
 // Crear plazas de ejemplo
-Plaza plazaNormal = new Plaza(1, 2.50m, "Normal");
-Plaza plazaPremium = new Plaza(2, 5.00m, "Premium");
+Plaza plazaNormal = new Plaza(1, 2.50m, 10, "Normal");
+Plaza plazaPremium = new Plaza(2, 5.00m, 5, "Premium");
 
 // Crear vehículo de ejemplo
 Vehiculo vehiculo = new Vehiculo(1, "Toyota", "1234ABC");
