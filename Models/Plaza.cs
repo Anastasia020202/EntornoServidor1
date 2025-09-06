@@ -8,4 +8,9 @@ public class Plaza : Servicio
     {
         Tipo = tipo;
     }
+
+    public void MostrarInformacion()
+    {
+        Console.WriteLine($"Plaza {Id}: {Tipo} - {Precio:C}");
+    }
 }

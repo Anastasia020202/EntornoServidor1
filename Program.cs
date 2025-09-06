@@ -32,8 +32,8 @@ while (true)
             admin.MostrarInfo();
             
             Console.WriteLine($"\nPlazas:");
-            Console.WriteLine($"Plaza {plazaNormal.Id}: {plazaNormal.Tipo} - {plazaNormal.Precio:C}");
-            Console.WriteLine($"Plaza {plazaPremium.Id}: {plazaPremium.Tipo} - {plazaPremium.Precio:C}");
+            plazaNormal.MostrarInformacion();
+            plazaPremium.MostrarInformacion();
             
             Console.WriteLine($"\nVehículo: {vehiculo.Marca} - {vehiculo.Matricula}");
             
