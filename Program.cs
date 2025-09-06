@@ -5,6 +5,16 @@ using ParkingApp1.ConsoleUI;
 Cliente cliente = new Cliente(1, "Juan Pérez", "juan@email.com");
 Admin admin = new Admin(2, "María García", "maria@parking.com", "Supervisor");
 
+// Crear plazas de ejemplo
+Plaza plazaNormal = new Plaza(1, 2.50m, "Normal");
+Plaza plazaPremium = new Plaza(2, 5.00m, "Premium");
+
+// Crear vehículo de ejemplo
+Vehiculo vehiculo = new Vehiculo(1, "Toyota", "1234ABC");
+
+// Crear reserva de ejemplo
+Reserva reserva = new Reserva(1, 1, 1);
+
 Console.WriteLine("=== Sistema de Parking ===");
 
 // Bucle principal del menú
@@ -16,11 +26,18 @@ while (true)
     {
         if (opcion == 1)
         {
-            Console.WriteLine("\n--- Información de Usuarios ---");
-            Console.WriteLine("\nCliente:");
+            Console.WriteLine("\n--- Información del Sistema ---");
+            Console.WriteLine("\nUsuarios:");
             cliente.MostrarInfo();
-            Console.WriteLine("\nAdministrador:");
             admin.MostrarInfo();
+            
+            Console.WriteLine($"\nPlazas:");
+            Console.WriteLine($"Plaza {plazaNormal.Id}: {plazaNormal.Tipo} - {plazaNormal.Precio:C}");
+            Console.WriteLine($"Plaza {plazaPremium.Id}: {plazaPremium.Tipo} - {plazaPremium.Precio:C}");
+            
+            Console.WriteLine($"\nVehículo: {vehiculo.Marca} - {vehiculo.Matricula}");
+            
+            Console.WriteLine($"\nReserva: Usuario {reserva.UsuarioId} -> Plaza {reserva.PlazaId}");
         }
         else if (opcion == 2)
         {
