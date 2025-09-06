@@ -1,8 +1,9 @@
 ﻿using ParkingApp1.Models;
 using ParkingApp1.ConsoleUI;
 
-// Crear un usuario de ejemplo
-Usuario usuario = new Usuario(1, "Juan Pérez");
+// Crear usuarios de ejemplo
+Cliente cliente = new Cliente(1, "Juan Pérez", "juan@email.com");
+Admin admin = new Admin(2, "María García", "maria@parking.com", "Supervisor");
 
 Console.WriteLine("=== Sistema de Parking ===");
 
@@ -15,8 +16,11 @@ while (true)
     {
         if (opcion == 1)
         {
-            Console.WriteLine("\n--- Información del Usuario ---");
-            usuario.MostrarInfo();
+            Console.WriteLine("\n--- Información de Usuarios ---");
+            Console.WriteLine("\nCliente:");
+            cliente.MostrarInfo();
+            Console.WriteLine("\nAdministrador:");
+            admin.MostrarInfo();
         }
         else if (opcion == 2)
         {
