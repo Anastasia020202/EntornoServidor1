@@ -15,13 +15,28 @@ while (true)
     {
         if (opcion == 1)
         {
-            Console.WriteLine("\n--- Sistema Inicializado ---");
-            Console.WriteLine("Datos cargados desde archivos JSON");
-            Console.WriteLine("Plazas, administradores y clientes inicializados");
+            MenuPrincipal.VerPlazas();
         }
         else if (opcion == 2)
         {
-            Console.WriteLine("¡Hasta luego!");
+            var sesion = MenuPrincipal.IniciarSesion();
+            if (sesion.EstaActiva)
+            {
+                Console.WriteLine("Sesión iniciada correctamente");
+                // Aquí irían los menús específicos según el rol
+            }
+            Console.WriteLine("\nPresiona Enter para continuar...");
+            Console.ReadLine();
+        }
+        else if (opcion == 3)
+        {
+            MenuPrincipal.Registrarse();
+            Console.WriteLine("\nPresiona Enter para continuar...");
+            Console.ReadLine();
+        }
+        else if (opcion == 4)
+        {
+            Console.WriteLine("¡Hasta la próxima!");
             break;
         }
         else
