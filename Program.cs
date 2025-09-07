@@ -1,19 +1,8 @@
-﻿using ParkingApp1.Models;
+﻿using ParkingApp1.Configuration;
 using ParkingApp1.ConsoleUI;
 
-// Crear usuarios de ejemplo
-Cliente cliente = new Cliente(1, "Juan Pérez", "juan@email.com");
-Admin admin = new Admin(2, "María García", "maria@parking.com", "Supervisor");
-
-// Crear plazas de ejemplo
-Plaza plazaNormal = new Plaza(1, 2.50m, 10, "Normal");
-Plaza plazaPremium = new Plaza(2, 5.00m, 5, "Premium");
-
-// Crear vehículo de ejemplo
-Vehiculo vehiculo = new Vehiculo(1, "Toyota", "1234ABC");
-
-// Crear reserva de ejemplo
-Reserva reserva = new Reserva(1, 1, 1);
+// Inicializar datos
+Initialization.TodasInicializaciones();
 
 Console.WriteLine("=== Sistema de Parking ===");
 
@@ -26,20 +15,9 @@ while (true)
     {
         if (opcion == 1)
         {
-            Console.WriteLine("\n--- Información del Sistema ---");
-            Console.WriteLine("\nUsuarios:");
-            cliente.MostrarInfo();
-            admin.MostrarInfo();
-            
-            Console.WriteLine($"\nPlazas:");
-            plazaNormal.MostrarInformacion();
-            plazaPremium.MostrarInformacion();
-            
-            Console.WriteLine($"\nVehículo:");
-            vehiculo.MostrarInformacion();
-            
-            Console.WriteLine($"\nReserva:");
-            reserva.MostrarDetalles();
+            Console.WriteLine("\n--- Sistema Inicializado ---");
+            Console.WriteLine("Datos cargados desde archivos JSON");
+            Console.WriteLine("Plazas, administradores y clientes inicializados");
         }
         else if (opcion == 2)
         {
