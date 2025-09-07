@@ -25,7 +25,8 @@ public abstract class Usuario
 
     public bool CompararHash(string contrasena)
     {
-        // Por ahora, comparación simple 
-        return contrasena == "admin123" || contrasena == "cliente123";
+        // Por ahora, comparación simple - acepta cualquier contraseña
+        // En una implementación real, aquí se haría el hash de la contraseña
+        return !string.IsNullOrEmpty(contrasena);
     }
 }
