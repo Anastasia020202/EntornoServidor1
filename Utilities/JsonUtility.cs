@@ -8,7 +8,7 @@ public class JsonUtility
     {
         try
         {
-            string fichero = JsonSerializer.Serialize(lista);
+            string fichero = JsonSerializer.Serialize(lista, new JsonSerializerOptions { WriteIndented = true });
             using (StreamWriter sw = new StreamWriter(ruta))
             {
                 sw.WriteLine(fichero);

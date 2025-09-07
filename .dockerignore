@@ -1,0 +1,33 @@
+# Archivos de compilación
+bin/
+obj/
+out/
+
+# Archivos de configuración de IDE
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Archivos de Git
+.git/
+.gitignore
+
+# Archivos de logs
+logs/
+*.log
+
+# Archivos temporales
+*.tmp
+*.temp
+
+# Archivos de datos (se crearán en el volumen)
+data/
+
+# Archivos de documentación
+README.md
+*.md
+
+# Archivos de Docker
+Dockerfile
+.dockerignore

@@ -10,9 +10,10 @@ public class MenuPrincipal
     {
         Console.WriteLine("\n=== MENÚ PRINCIPAL ===");
         Console.WriteLine("1. Ver plazas disponibles");
-        Console.WriteLine("2. Iniciar sesión");
-        Console.WriteLine("3. Registrarse");
-        Console.WriteLine("4. Salir");
+        Console.WriteLine("2. Buscar plazas");
+        Console.WriteLine("3. Iniciar sesión");
+        Console.WriteLine("4. Registrarse");
+        Console.WriteLine("5. Salir");
         Console.WriteLine("========================");
         Console.Write("Selecciona una opción: ");
     }
@@ -55,6 +56,39 @@ public class MenuPrincipal
             Console.WriteLine("Credenciales incorrectas.");
             return sesion;
         }
+    }
+
+    public static void BuscarPlazas()
+    {
+        Console.WriteLine("\n--- BUSCAR PLAZAS ---");
+        Console.Write("Introduce el tipo de plaza (Estándar, Premium, Moto): ");
+        string tipo = Console.ReadLine() ?? "";
+        
+        try
+        {
+            var plazas = PlazaRepository.CargarPlazas();
+            var resultados = plazas.Where(p => p.Tipo.ToLower().Contains(tipo.ToLower())).ToList();
+            
+            if (resultados.Any())
+            {
+                Console.WriteLine($"\n--- RESULTADOS DE BÚSQUEDA ({resultados.Count} encontradas) ---");
+                foreach (var plaza in resultados)
+                {
+                    plaza.MostrarInformacion();
+                }
+            }
+            else
+            {
+                Console.WriteLine("No se encontraron plazas con el tipo especificado.");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Error en la búsqueda: {e.Message}");
+        }
+        
+        Console.WriteLine("\nPresiona Enter para continuar...");
+        Console.ReadLine();
     }
 
     public static void Registrarse()

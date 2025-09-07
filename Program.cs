@@ -19,6 +19,10 @@ while (true)
         }
         else if (opcion == 2)
         {
+            MenuPrincipal.BuscarPlazas();
+        }
+        else if (opcion == 3)
+        {
             var sesion = MenuPrincipal.IniciarSesion();
             if (sesion.EstaActiva)
             {
@@ -99,13 +103,13 @@ while (true)
                 }
             }
         }
-        else if (opcion == 3)
+        else if (opcion == 4)
         {
             MenuPrincipal.Registrarse();
             Console.WriteLine("\nPresiona Enter para continuar...");
             Console.ReadLine();
         }
-        else if (opcion == 4)
+        else if (opcion == 5)
         {
             Console.WriteLine("¡Hasta la próxima!");
             break;
