@@ -22,4 +22,10 @@ public abstract class Usuario
     }
 
     public abstract string ObtenerTipoUsuario();
+
+    public bool CompararHash(string contrasena)
+    {
+        // Por ahora, comparación simple (después implementaremos hash real)
+        return contrasena == "admin123" || contrasena == "cliente123";
+    }
 }
