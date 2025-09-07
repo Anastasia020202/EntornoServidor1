@@ -4,17 +4,28 @@ public class Vehiculo
 {
     public int Id { get; set; }
     public string Marca { get; set; }
+    public string Modelo { get; set; }
+    public string Color { get; set; }
     public string Matricula { get; set; }
+    public int UsuarioId { get; set; }
+    public bool Activo { get; set; }
+    public DateTime FechaRegistro { get; set; }
 
-    public Vehiculo(int id, string marca, string matricula)
+    public Vehiculo(int id, string marca, string modelo, string color, string matricula, int usuarioId)
     {
         Id = id;
         Marca = marca;
+        Modelo = modelo;
+        Color = color;
         Matricula = matricula;
+        UsuarioId = usuarioId;
+        Activo = true;
+        FechaRegistro = DateTime.Now;
     }
 
     public void MostrarInformacion()
     {
-        Console.WriteLine($"Vehículo {Id}: {Marca} - {Matricula}");
+        Console.WriteLine($"Vehículo {Id}: {Marca} {Modelo} ({Color}) - {Matricula}");
+        Console.WriteLine($"Registrado: {FechaRegistro:dd/MM/yyyy}");
     }
 }
