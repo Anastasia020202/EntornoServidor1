@@ -19,8 +19,8 @@ COPY --from=build /app/out .
 # Creamos un volumen para los datos
 VOLUME ["/app/data"]
 
-# Exponemos el puerto 8023 
-EXPOSE 8023
+# Exponemos el puerto 7138 
+EXPOSE 7138
 
 # Creamos la variable de entorno para la configuración
 ENV APP_ENVIRONMENT=Production

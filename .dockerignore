@@ -1,33 +1,31 @@
-# Archivos de compilación
-bin/
-obj/
-out/
-
-# Archivos de configuración de IDE
-.vs/
-.vscode/
-*.user
-*.suo
-
 # Archivos de Git
-.git/
+.git
 .gitignore
 
-# Archivos de logs
-logs/
-*.log
+# Archivos de Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
 
-# Archivos temporales
-*.tmp
-*.temp
+# Archivos de compilación
+*.dll
+*.exe
+*.pdb
 
 # Archivos de datos (se crearán en el volumen)
 data/
 
-# Archivos de documentación
+# Archivos temporales
+*.tmp
+*.log
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Documentación
 README.md
 *.md
-
-# Archivos de Docker
-Dockerfile
-.dockerignore
