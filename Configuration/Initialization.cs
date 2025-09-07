@@ -10,6 +10,8 @@ public static class Initialization
         InicializarPlazas();
         InicializarAdmin();
         InicializarClientes();
+        InicializarVehiculos();
+        InicializarReservas();
     }
 
     private static void InicializarPlazas()
@@ -47,6 +49,26 @@ public static class Initialization
         {
             clientes = new List<Cliente>();
             ClienteRepository.GuardarClientes(clientes);
+        }
+    }
+
+    private static void InicializarVehiculos()
+    {
+        var vehiculos = VehiculoRepository.CargarVehiculos();
+        if (!vehiculos.Any())
+        {
+            vehiculos = new List<Vehiculo>();
+            VehiculoRepository.GuardarVehiculos(vehiculos);
+        }
+    }
+
+    private static void InicializarReservas()
+    {
+        var reservas = ReservaRepository.CargarReservas();
+        if (!reservas.Any())
+        {
+            reservas = new List<Reserva>();
+            ReservaRepository.GuardarReservas(reservas);
         }
     }
 }

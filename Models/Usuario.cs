@@ -25,7 +25,7 @@ public abstract class Usuario
 
     public bool CompararHash(string contrasena)
     {
-        // Por ahora, comparación simple (después implementaremos hash real)
+        // Por ahora, comparación simple 
         return contrasena == "admin123" || contrasena == "cliente123";
     }
 }
