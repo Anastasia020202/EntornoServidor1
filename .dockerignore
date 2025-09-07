@@ -1,0 +1,31 @@
+# Archivos de Git
+.git
+.gitignore
+
+# Archivos de Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+
+# Archivos de compilación
+*.dll
+*.exe
+*.pdb
+
+# Archivos de datos (se crearán en el volumen)
+data/
+
+# Archivos temporales
+*.tmp
+*.log
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Documentación
+README.md
+*.md
