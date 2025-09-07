@@ -103,8 +103,24 @@ public class MenuPrincipal
 
         try
         {
-            var cliente = new Cliente(0, nombre, correo);
+            // Verificar si el correo ya existe
             var clientes = ClienteRepository.CargarClientes();
+            var admins = AdminRepository.CargarAdmin();
+            
+            if (clientes.Any(c => c.Email == correo) || admins.Any(a => a.Email == correo))
+            {
+                Console.WriteLine("Este correo ya está registrado. Por favor, usa otro correo.");
+                return;
+            }
+
+            // Generar ID único
+            int nuevoId = 1;
+            if (clientes.Any())
+            {
+                nuevoId = clientes.Max(c => c.Id) + 1;
+            }
+
+            var cliente = new Cliente(nuevoId, nombre, correo);
             clientes.Add(cliente);
             ClienteRepository.GuardarClientes(clientes);
             Console.WriteLine("¡Registrado con éxito!");

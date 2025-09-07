@@ -49,19 +49,31 @@ while (true)
                                     MenuAdmin.VerTodasLasReservas();
                                     break;
                                 case 5:
-                                    MenuAdmin.VerClientesRegistrados();
+                                    MenuAdmin.EliminarReserva();
                                     break;
                                 case 6:
-                                    MenuAdmin.EliminarCliente();
+                                    MenuAdmin.VerClientesRegistrados();
                                     break;
                                 case 7:
+                                    MenuAdmin.RegistrarNuevoCliente();
+                                    break;
+                                case 8:
+                                    MenuAdmin.EliminarCliente();
+                                    break;
+                                case 9:
+                                    MenuAdmin.AñadirVehiculoACliente();
+                                    break;
+                                case 10:
+                                    MenuAdmin.EliminarVehiculo();
+                                    break;
+                                case 11:
                                     sesion.CerrarSesion();
                                     break;
                                 default:
                                     Console.WriteLine("Opción no válida.");
                                     break;
                             }
-                            if (opcionAdmin == 7) break;
+                            if (opcionAdmin == 11) break;
                         }
                     }
                 }
@@ -88,16 +100,19 @@ while (true)
                                     MenuCliente.CancelarReserva(sesion);
                                     break;
                                 case 5:
-                                    MenuCliente.RegistrarVehiculo(sesion);
+                                    MenuCliente.VerMisVehiculos(sesion);
                                     break;
                                 case 6:
+                                    MenuCliente.RegistrarVehiculo(sesion);
+                                    break;
+                                case 7:
                                     sesion.CerrarSesion();
                                     break;
                                 default:
                                     Console.WriteLine("Opción no válida.");
                                     break;
                             }
-                            if (opcionCliente == 6) break;
+                            if (opcionCliente == 7) break;
                         }
                     }
                 }

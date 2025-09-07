@@ -9,13 +9,14 @@ public class MenuCliente
     public static void MostrarMenu(Sesion sesion)
     {
         Console.WriteLine("\n=== MENÚ CLIENTE ===");
-        Console.WriteLine($"Bienvenido, {sesion.UsuarioActivo?.Nombre}");
+        Console.WriteLine($"Bienvenido/a, {sesion.UsuarioActivo?.Nombre}");
         Console.WriteLine("1. Ver mis reservas");
         Console.WriteLine("2. Ver plazas disponibles");
         Console.WriteLine("3. Hacer reserva");
         Console.WriteLine("4. Cancelar reserva");
-        Console.WriteLine("5. Registrar vehículo");
-        Console.WriteLine("6. Cerrar sesión");
+        Console.WriteLine("5. Ver mis vehículos");
+        Console.WriteLine("6. Registrar vehículo");
+        Console.WriteLine("7. Cerrar sesión");
         Console.WriteLine("=====================");
         Console.Write("Selecciona una opción: ");
     }
@@ -172,7 +173,15 @@ public class MenuCliente
             {
                 // 7. Crear reserva
                 var reservas = ReservaRepository.CargarReservas();
-                var nuevaReserva = new Reserva(reservas.Count + 1, sesion.UsuarioActivo!.Id, plazaSeleccionada.Id, vehiculoSeleccionado.Id, horas, importe);
+                
+                // Generar ID único
+                int nuevoId = 1;
+                if (reservas.Any())
+                {
+                    nuevoId = reservas.Max(r => r.Id) + 1;
+                }
+                
+                var nuevaReserva = new Reserva(nuevoId, sesion.UsuarioActivo!.Id, plazaSeleccionada.Id, vehiculoSeleccionado.Id, horas, importe);
                 
                 // 8. Actualizar stock de la plaza
                 plazaSeleccionada.CantidadDisponible--;
@@ -301,6 +310,8 @@ public class MenuCliente
     public static void RegistrarVehiculo(Sesion sesion)
     {
         Console.WriteLine("\n--- REGISTRAR VEHÍCULO ---");
+        Console.Write("Tipo de vehículo (Coche/Moto): ");
+        string tipoVehiculo = Console.ReadLine() ?? "";
         Console.Write("Marca: ");
         string marca = Console.ReadLine() ?? "";
         Console.Write("Modelo: ");
@@ -313,7 +324,15 @@ public class MenuCliente
         try
         {
             var vehiculos = VehiculoRepository.CargarVehiculos();
-            var nuevoVehiculo = new Vehiculo(vehiculos.Count + 1, marca, modelo, color, matricula, sesion.UsuarioActivo!.Id);
+            
+            // Generar ID único
+            int nuevoId = 1;
+            if (vehiculos.Any())
+            {
+                nuevoId = vehiculos.Max(v => v.Id) + 1;
+            }
+            
+            var nuevoVehiculo = new Vehiculo(nuevoId, marca, modelo, color, matricula, tipoVehiculo, sesion.UsuarioActivo!.Id);
             vehiculos.Add(nuevoVehiculo);
             VehiculoRepository.GuardarVehiculos(vehiculos);
             Console.WriteLine("¡Vehículo registrado con éxito!");
@@ -321,6 +340,38 @@ public class MenuCliente
         catch (Exception e)
         {
             Console.WriteLine($"Error al registrar vehículo: {e.Message}");
+        }
+        Console.WriteLine("\nPresiona Enter para continuar...");
+        Console.ReadLine();
+    }
+
+    public static void VerMisVehiculos(Sesion sesion)
+    {
+        Console.WriteLine("\n--- MIS VEHÍCULOS ---");
+        try
+        {
+            var vehiculos = VehiculoRepository.CargarVehiculos();
+            var misVehiculos = vehiculos.Where(v => v.UsuarioId == sesion.UsuarioActivo?.Id).ToList();
+            
+            if (misVehiculos.Any())
+            {
+                foreach (var vehiculo in misVehiculos)
+                {
+                    Console.WriteLine($"ID: {vehiculo.Id} - {vehiculo.Marca} {vehiculo.Modelo} ({vehiculo.Color})");
+                    Console.WriteLine($"   Matrícula: {vehiculo.Matricula}");
+                    Console.WriteLine($"   Tipo: {vehiculo.TipoVehiculo}");
+                    Console.WriteLine($"   Fecha de registro: {vehiculo.FechaRegistro:dd/MM/yyyy}");
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                Console.WriteLine("No tienes vehículos registrados.");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Error al cargar vehículos: {e.Message}");
         }
         Console.WriteLine("\nPresiona Enter para continuar...");
         Console.ReadLine();
