@@ -65,14 +65,7 @@ public class MenuAdmin
                 {
                     var plazas = PlazaRepository.CargarPlazas();
                     
-                    // Generar ID único
-                    int nuevoId = 1;
-                    if (plazas.Any())
-                    {
-                        nuevoId = plazas.Max(p => p.Id) + 1;
-                    }
-                    
-                    var nuevaPlaza = new Plaza(nuevoId, precio, cantidad, tipo);
+                    var nuevaPlaza = new Plaza(precio, cantidad, tipo);
                     plazas.Add(nuevaPlaza);
                     PlazaRepository.GuardarPlazas(plazas);
                     Console.WriteLine("¡Plaza añadida con éxito!");
@@ -255,14 +248,7 @@ public class MenuAdmin
                 return;
             }
 
-            // Generar ID único
-            int nuevoId = 1;
-            if (clientes.Any())
-            {
-                nuevoId = clientes.Max(c => c.Id) + 1;
-            }
-
-            var cliente = new Cliente(nuevoId, nombre, correo);
+            var cliente = new Cliente(nombre, correo);
             clientes.Add(cliente);
             ClienteRepository.GuardarClientes(clientes);
             Console.WriteLine("¡Cliente registrado con éxito!");
@@ -329,14 +315,7 @@ public class MenuAdmin
 
                 var vehiculos = VehiculoRepository.CargarVehiculos();
                 
-                // Generar ID único
-                int nuevoId = 1;
-                if (vehiculos.Any())
-                {
-                    nuevoId = vehiculos.Max(v => v.Id) + 1;
-                }
-                
-                var nuevoVehiculo = new Vehiculo(nuevoId, marca, modelo, color, matricula, tipoVehiculo, clienteSeleccionado.Id);
+                var nuevoVehiculo = new Vehiculo(marca, modelo, color, matricula, tipoVehiculo, clienteSeleccionado.Id);
                 vehiculos.Add(nuevoVehiculo);
                 VehiculoRepository.GuardarVehiculos(vehiculos);
                 Console.WriteLine($"¡Vehículo añadido con éxito al cliente {clienteSeleccionado.Nombre}!");

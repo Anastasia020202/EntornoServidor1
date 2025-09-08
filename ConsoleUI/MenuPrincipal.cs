@@ -113,14 +113,7 @@ public class MenuPrincipal
                 return;
             }
 
-            // Generar ID único
-            int nuevoId = 1;
-            if (clientes.Any())
-            {
-                nuevoId = clientes.Max(c => c.Id) + 1;
-            }
-
-            var cliente = new Cliente(nuevoId, nombre, correo);
+            var cliente = new Cliente(nombre, correo);
             clientes.Add(cliente);
             ClienteRepository.GuardarClientes(clientes);
             Console.WriteLine("¡Registrado con éxito!");

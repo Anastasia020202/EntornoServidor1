@@ -174,14 +174,7 @@ public class MenuCliente
                 // 7. Crear reserva
                 var reservas = ReservaRepository.CargarReservas();
                 
-                // Generar ID único
-                int nuevoId = 1;
-                if (reservas.Any())
-                {
-                    nuevoId = reservas.Max(r => r.Id) + 1;
-                }
-                
-                var nuevaReserva = new Reserva(nuevoId, sesion.UsuarioActivo!.Id, plazaSeleccionada.Id, vehiculoSeleccionado.Id, horas, importe);
+                var nuevaReserva = new Reserva(sesion.UsuarioActivo!.Id, plazaSeleccionada.Id, vehiculoSeleccionado.Id, horas, importe);
                 
                 // 8. Actualizar stock de la plaza
                 plazaSeleccionada.CantidadDisponible--;
@@ -325,14 +318,7 @@ public class MenuCliente
         {
             var vehiculos = VehiculoRepository.CargarVehiculos();
             
-            // Generar ID único
-            int nuevoId = 1;
-            if (vehiculos.Any())
-            {
-                nuevoId = vehiculos.Max(v => v.Id) + 1;
-            }
-            
-            var nuevoVehiculo = new Vehiculo(nuevoId, marca, modelo, color, matricula, tipoVehiculo, sesion.UsuarioActivo!.Id);
+            var nuevoVehiculo = new Vehiculo(marca, modelo, color, matricula, tipoVehiculo, sesion.UsuarioActivo!.Id);
             vehiculos.Add(nuevoVehiculo);
             VehiculoRepository.GuardarVehiculos(vehiculos);
             Console.WriteLine("¡Vehículo registrado con éxito!");

@@ -4,6 +4,12 @@ public class Admin : Usuario
 {
     public string Rol { get; set; }
 
+    // Constructor sin parámetros para JSON
+    public Admin() : base()
+    {
+        Rol = "";
+    }
+
     public Admin(int id, string nombre, string email, string rol) : base(id, nombre, email)
     {
         Rol = rol;

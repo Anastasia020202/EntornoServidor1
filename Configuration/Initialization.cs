@@ -12,6 +12,7 @@ public static class Initialization
         InicializarClientes();
         InicializarVehiculos();
         InicializarReservas();
+        InicializarNextIds();
     }
 
     private static void InicializarPlazas()
@@ -70,5 +71,31 @@ public static class Initialization
             reservas = new List<Reserva>();
             ReservaRepository.GuardarReservas(reservas);
         }
+    }
+
+    private static void InicializarNextIds()
+    {
+        // Inicializar nextId para Usuario (Cliente y Admin)
+        var clientes = ClienteRepository.CargarClientes();
+        var admins = AdminRepository.CargarAdmin();
+        var maxUsuarioId = 0;
+        if (clientes.Any()) maxUsuarioId = Math.Max(maxUsuarioId, clientes.Max(c => c.Id));
+        if (admins.Any()) maxUsuarioId = Math.Max(maxUsuarioId, admins.Max(a => a.Id));
+        Usuario.SetNextId(maxUsuarioId + 1);
+
+        // Inicializar nextId para Vehiculo
+        var vehiculos = VehiculoRepository.CargarVehiculos();
+        var maxVehiculoId = vehiculos.Any() ? vehiculos.Max(v => v.Id) : 0;
+        Vehiculo.SetNextId(maxVehiculoId + 1);
+
+        // Inicializar nextId para Reserva
+        var reservas = ReservaRepository.CargarReservas();
+        var maxReservaId = reservas.Any() ? reservas.Max(r => r.Id) : 0;
+        Reserva.SetNextId(maxReservaId + 1);
+
+        // Inicializar nextId para Plaza (hereda de Servicio)
+        var plazas = PlazaRepository.CargarPlazas();
+        var maxPlazaId = plazas.Any() ? plazas.Max(p => p.Id) : 0;
+        Servicio.SetNextId(maxPlazaId + 1);
     }
 }

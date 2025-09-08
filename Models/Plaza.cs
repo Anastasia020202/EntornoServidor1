@@ -4,7 +4,19 @@ public class Plaza : Servicio
 {
     public string Tipo { get; set; }
 
+    // Constructor sin parámetros para JSON
+    public Plaza() : base()
+    {
+        Tipo = "";
+    }
+
     public Plaza(int id, decimal precio, int cantidadDisponible, string tipo) : base(id, precio, cantidadDisponible)
+    {
+        Tipo = tipo;
+    }
+
+    // Constructor para la creación de nueva plaza
+    public Plaza(decimal precio, int cantidadDisponible, string tipo) : base(precio, cantidadDisponible)
     {
         Tipo = tipo;
     }
